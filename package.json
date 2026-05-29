@@ -1,0 +1,38 @@
+{
+  "name": "merlin-scaffold",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@expo-google-fonts/inter": "^0.4.2",
+    "expo": "~56.0.6",
+    "expo-blur": "~56.0.3",
+    "expo-font": "~56.0.5",
+    "expo-linear-gradient": "~56.0.4",
+    "expo-status-bar": "~56.0.4",
+    "phosphor-react-native": "^3.0.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.85.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.4",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@storybook/react-native-web-vite": "^9.1.20",
+    "@types/react": "~19.2.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "storybook": "^9.1.20",
+    "typescript": "~6.0.3",
+    "vite": "^6.4.2"
+  },
+  "scripts": {
+    "start": "expo start",
+    "tunnel": "expo start --tunnel",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "private": true
+}

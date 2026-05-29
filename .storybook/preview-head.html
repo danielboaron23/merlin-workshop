@@ -1,0 +1,31 @@
+<!-- Load the real Inter font files (the free stand-in for the commercial Saans)
+     and bind them to the exact family names our tokens use, so text in
+     Storybook renders identically to the app. The .ttf files are served from
+     .storybook/public/fonts (staticDirs in main.ts). -->
+<style>
+  @font-face {
+    font-family: "Inter_400Regular";
+    src: url("/fonts/Inter_400Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter_500Medium";
+    src: url("/fonts/Inter_500Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter_600SemiBold";
+    src: url("/fonts/Inter_600SemiBold.ttf") format("truetype");
+    font-weight: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter_700Bold";
+    src: url("/fonts/Inter_700Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-display: swap;
+  }
+  body { font-family: "Inter_400Regular", sans-serif; }
+</style>
