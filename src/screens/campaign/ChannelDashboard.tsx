@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { ArrowRight, Pause, PencilSimple, Play, Sparkle, Stop } from "phosphor-react-native";
 import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -9,7 +10,9 @@ import {
   CHANNEL_LABEL,
   Dialog,
   Text,
+  channelTint,
   color,
+  gradient,
   radius,
   spacing,
 } from "../../design-system";
@@ -50,19 +53,23 @@ export default function ChannelDashboard({
     <View style={styles.screen}>
       <AppBar title="Campaigns" />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-        <Card background={color.surface.card} style={styles.hero}>
+        <LinearGradient colors={gradient.brand.colors} start={gradient.brand.start} end={gradient.brand.end} style={styles.hero}>
           <View style={styles.statusRow}>
-            <View style={[styles.dot, { backgroundColor: meta.dot }]} />
-            <Text variant="h7">{meta.label}</Text>
+            <View style={styles.statusPill}>
+              <View style={[styles.dot, { backgroundColor: meta.dot }]} />
+              <Text variant="buttonSubtle" tone="onDark">{meta.label}</Text>
+            </View>
             <View style={styles.heroGlyphs}>
-              {draft.channels.map((c) => <ChannelGlyph key={c} channel={c} size={18} />)}
+              {draft.channels.map((c) => (
+                <View key={c} style={styles.heroGlyphChip}>
+                  <ChannelGlyph channel={c} size={15} />
+                </View>
+              ))}
             </View>
           </View>
-          <View style={styles.spendRow}>
-            <Text variant="h3">${spent}</Text>
-            <Text variant="paragraphMd" tone="input"> of ${tier.monthly} this month</Text>
-          </View>
-        </Card>
+          <Text variant="h3" tone="onDark" style={styles.spendAmount}>${spent}</Text>
+          <Text variant="paragraphSm" tone="onDark" style={styles.spendSub}>of ${tier.monthly} this month</Text>
+        </LinearGradient>
 
         <View style={styles.noteRow}>
           <Sparkle size={16} color={color.accent.blue} weight="fill" />
@@ -83,17 +90,26 @@ export default function ChannelDashboard({
         {/* Per-channel breakdown */}
         <Text variant="h6">By channel</Text>
         <View style={{ gap: spacing.lg }}>
-          {perChannel.map((p) => (
-            <Card key={p.channel} style={styles.channelRow}>
-              <View style={styles.channelGlyphTile}>
-                <ChannelGlyph channel={p.channel} size={22} />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text variant="h7">{CHANNEL_LABEL[p.channel]}</Text>
-                <Text variant="paragraphSm" tone="input">{p.leads} leads · ${p.costPerLead}/lead · {p.pct}% of budget</Text>
-              </View>
-            </Card>
-          ))}
+          {perChannel.map((p) => {
+            const tint = channelTint(p.channel);
+            return (
+              <Card key={p.channel} style={styles.channelRow}>
+                <View style={[styles.channelGlyphTile, { backgroundColor: tint + "1A" }]}>
+                  <ChannelGlyph channel={p.channel} size={22} />
+                </View>
+                <View style={{ flex: 1, gap: spacing.sm }}>
+                  <View style={styles.channelTop}>
+                    <Text variant="h7">{CHANNEL_LABEL[p.channel].replace(" Ads", "")}</Text>
+                    <Text variant="paragraphSm" tone="input">{p.pct}%</Text>
+                  </View>
+                  <View style={styles.shareTrack}>
+                    <View style={[styles.shareFill, { width: `${p.pct}%`, backgroundColor: tint }]} />
+                  </View>
+                  <Text variant="paragraphSm" tone="input">{p.leads} leads · ${p.costPerLead} per lead</Text>
+                </View>
+              </Card>
+            );
+          })}
         </View>
 
         {draft.channels.length > 1 ? (
@@ -140,11 +156,21 @@ const styles = StyleSheet.create({
   scroll: { flex: 1 },
   body: { paddingHorizontal: spacing.xl, paddingBottom: spacing.huge, gap: spacing.xl },
 
-  hero: { gap: spacing.md },
-  statusRow: { flexDirection: "row", alignItems: "center", gap: spacing.md },
-  dot: { width: 9, height: 9, borderRadius: radius.pill },
+  hero: { borderRadius: radius.xl, padding: spacing.xxl, gap: spacing.sm },
+  statusRow: { flexDirection: "row", alignItems: "center" },
+  statusPill: {
+    flexDirection: "row", alignItems: "center", gap: spacing.sm,
+    backgroundColor: "rgba(255,255,255,0.2)", paddingHorizontal: spacing.md, paddingVertical: spacing.xs,
+    borderRadius: radius.pill,
+  },
+  dot: { width: 8, height: 8, borderRadius: radius.pill },
   heroGlyphs: { flexDirection: "row", alignItems: "center", gap: spacing.sm, marginLeft: "auto" },
-  spendRow: { flexDirection: "row", alignItems: "flex-end" },
+  heroGlyphChip: {
+    width: 28, height: 28, borderRadius: radius.pill, backgroundColor: color.surface.bg,
+    alignItems: "center", justifyContent: "center",
+  },
+  spendAmount: { marginTop: spacing.lg },
+  spendSub: { opacity: 0.9 },
 
   noteRow: { flexDirection: "row", alignItems: "flex-start", gap: spacing.md, paddingHorizontal: spacing.xs },
 
@@ -156,6 +182,9 @@ const styles = StyleSheet.create({
     width: 44, height: 44, borderRadius: radius.md, backgroundColor: color.surface.card,
     alignItems: "center", justifyContent: "center",
   },
+  channelTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  shareTrack: { height: 6, borderRadius: radius.pill, backgroundColor: color.surface.card, overflow: "hidden" },
+  shareFill: { height: 6, borderRadius: radius.pill },
 
   insight: { flexDirection: "row", alignItems: "flex-start", gap: spacing.md },
   leadsNudge: { flexDirection: "row", alignItems: "center", gap: spacing.md },

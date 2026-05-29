@@ -71,7 +71,9 @@ function StepFrame({ stepKey, onBack, onClose, children, footer }: {
 function StepTitle({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <View style={styles.titleBlock}>
-      <Text variant="h3">{title}</Text>
+      <Text variant="h3" numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
+        {title}
+      </Text>
       {subtitle ? <Text variant="paragraphMd" tone="secondaryHeading">{subtitle}</Text> : null}
     </View>
   );
@@ -415,7 +417,7 @@ function SuccessStep({ draft, onDone }: { draft: ChannelDraft; onDone: () => voi
         <View style={styles.channelLine}>
           {draft.channels.map((c) => <ChannelGlyph key={c} channel={c} size={24} />)}
         </View>
-        <Text variant="h3" center>{plural ? "Your campaigns are live" : "Your campaign is live"}</Text>
+        <Text variant="h3" center numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>{plural ? "Your campaigns are live" : "Your campaign is live"}</Text>
         <Text variant="paragraphMd" tone="secondaryHeading" center>
           Merlin is putting you in front of the right people. We'll learn over the next 7 days, and your
           new leads land right here.

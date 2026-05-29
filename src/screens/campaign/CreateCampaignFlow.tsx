@@ -89,7 +89,9 @@ function StepFrame({
 function StepTitle({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <View style={styles.titleBlock}>
-      <Text variant="h3">{title}</Text>
+      <Text variant="h3" numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
+        {title}
+      </Text>
       {subtitle ? <Text variant="paragraphMd" tone="secondaryHeading">{subtitle}</Text> : null}
     </View>
   );
@@ -428,7 +430,7 @@ function SuccessStep({ draft, onDone }: { draft: CampaignDraft; onDone: () => vo
         <View style={styles.successIcon}>
           <CheckCircle size={56} color={color.accent.green} weight="fill" />
         </View>
-        <Text variant="h3" center>Your campaign is live</Text>
+        <Text variant="h3" center numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>Your campaign is live</Text>
         <Text variant="paragraphMd" tone="secondaryHeading" center>
           Merlin is putting you in front of people searching on Google. We'll start learning over
           the next 7 days, and you'll see new leads land right here.

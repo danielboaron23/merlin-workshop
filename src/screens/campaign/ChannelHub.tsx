@@ -67,7 +67,9 @@ export default function ChannelHub({
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
-          <Text variant="h3">Where do you{"\n"}want to grow?</Text>
+          <Text variant="h3" numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
+            Where do you want to grow?
+          </Text>
           <Text variant="paragraphMd" tone="secondaryHeading">
             Pick a channel, or combine a few. Merlin builds and runs the ads for you.
           </Text>

@@ -31,7 +31,7 @@ function Placeholder({ title }: { title: string }) {
  */
 function Shell() {
   const insets = useSafeAreaInsets();
-  const [tab, setTab] = useState<TabKey>("home");
+  const [tab, setTab] = useState<TabKey>("campaigns");
   const isWeb = Platform.OS === "web";
 
   const topPad = isWeb ? 12 : insets.top;
