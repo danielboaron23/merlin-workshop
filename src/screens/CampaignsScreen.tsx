@@ -1,10 +1,50 @@
 import { LinearGradient } from "expo-linear-gradient";
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AppBar from "../components/AppBar";
 import GoogleAdCard from "../components/GoogleAdCard";
 import { colors, font, heroGradient, radius, space, type } from "../theme";
+import CampaignDashboard from "./campaign/CampaignDashboard";
+import CreateCampaignFlow from "./campaign/CreateCampaignFlow";
+import { CampaignDraft } from "./campaign/draft";
 
+type View_ = "landing" | "flow" | "dashboard";
+
+/**
+ * Campaigns tab. A small state machine:
+ *  - landing   → marketing screen with "Check it out" (the Figma design)
+ *  - flow      → the Create Campaign flow (docs/PRD-campaigns.md)
+ *  - dashboard → post-launch campaign dashboard
+ */
 export default function CampaignsScreen() {
+  const [view, setView] = useState<View_>("landing");
+  const [draft, setDraft] = useState<CampaignDraft | null>(null);
+
+  if (view === "flow") {
+    return (
+      <CreateCampaignFlow
+        onClose={() => setView(draft ? "dashboard" : "landing")}
+        onLaunched={(d) => {
+          setDraft(d);
+          setView("dashboard");
+        }}
+      />
+    );
+  }
+
+  if (view === "dashboard" && draft) {
+    return (
+      <CampaignDashboard
+        draft={draft}
+        onEdit={() => setView("flow")}
+        onEnd={() => {
+          setDraft(null);
+          setView("landing");
+        }}
+      />
+    );
+  }
+
   return (
     <>
       <AppBar title="Campaigns" />
@@ -38,7 +78,7 @@ export default function CampaignsScreen() {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.cta} activeOpacity={0.85}>
+        <TouchableOpacity style={styles.cta} activeOpacity={0.85} onPress={() => setView("flow")}>
           <Text style={styles.ctaText}>Check it out</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -71,7 +111,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.5)",
-    padding: 8,
   },
   textBlock: { alignSelf: "stretch", marginTop: 28, gap: space.xl },
   heading: {

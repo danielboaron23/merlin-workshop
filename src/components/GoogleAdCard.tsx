@@ -7,8 +7,18 @@ import { GoogleLogo } from "./Logos";
 /**
  * The little white "Google Ads" search-result mockup.
  * `scale` shrinks the whole thing for the small version on the Home boost card.
+ * `title`/`description` override the default copy so the card can act as a live
+ * preview in the Create Campaign flow.
  */
-export default function GoogleAdCard({ scale = 1 }: { scale?: number }) {
+export default function GoogleAdCard({
+  scale = 1,
+  title = "Art up nail studio NYC",
+  description = "Art Nail NYC in Manhattan focuses on gel nails and natural nail care for healthy, lasting results.",
+}: {
+  scale?: number;
+  title?: string;
+  description?: string;
+}) {
   const s = (n: number) => n * scale;
   return (
     <View style={[styles.card, { padding: s(11), borderRadius: s(20), gap: s(13) }]}>
@@ -28,10 +38,11 @@ export default function GoogleAdCard({ scale = 1 }: { scale?: number }) {
             <Text style={[styles.adUrl, { fontSize: s(11) }]}>
               <Text style={{ fontFamily: font.bold }}>Ad</Text> · artup/merlin-site.com
             </Text>
-            <Text style={[styles.adTitle, { fontSize: s(11.5) }]}>Art up nail studio NYC</Text>
+            <Text style={[styles.adTitle, { fontSize: s(11.5) }]} numberOfLines={1}>
+              {title}
+            </Text>
             <Text style={[styles.adDesc, { fontSize: s(11) }]} numberOfLines={3}>
-              Art Nail NYC in Manhattan focuses on gel nails and natural nail care for
-              healthy, lasting results.
+              {description}
             </Text>
           </View>
           <Image source={images.nailPhoto} style={{ width: s(62), height: s(80), borderRadius: s(11) }} />

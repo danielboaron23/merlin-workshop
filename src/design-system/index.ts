@@ -22,3 +22,5 @@ export { default as Chip } from "./components/Chip";
 export { default as Slider } from "./components/Slider";
 export { default as Dialog } from "./components/Dialog";
 export { default as StepCard } from "./components/StepCard";
+export { default as StepHeader } from "./components/StepHeader";
+export { default as OptionCard } from "./components/OptionCard";
