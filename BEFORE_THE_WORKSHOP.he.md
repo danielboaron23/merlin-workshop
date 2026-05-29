@@ -31,8 +31,11 @@
   - **Mac:** הטרמינל הוא אפליקציית **Terminal** (Cmd+Space → הקלידו "Terminal").
   - **Windows:** השתמשו ב-**PowerShell** (תפריט Start → הקלידו "PowerShell").
 
-### 2. עורך קוד  *(מומלץ: VS Code)*
-- הורידו מ-**<https://code.visualstudio.com>** והתקינו. נשתמש בו כדי להסתכל על הקוד.
+### 2. עורך קוד  *(בחרו אחד — מה שנוח לכם)*
+- **VS Code** — מ-**<https://code.visualstudio.com>**, או
+- **Cursor** — מ-**<https://cursor.com>** (עורך עם AI מובנה)
+
+נשתמש בו כדי להסתכל על הקוד.
 
 ### 3. Claude Code  *(עוזר ה-AI שאיתו נערוך את האפליקציה)*
 - עקבו אחר מדריך ההתקנה ב-**<https://docs.claude.com/claude-code>**.
