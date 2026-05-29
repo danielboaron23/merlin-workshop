@@ -24,12 +24,19 @@ Three screens, switched with the bottom tab bar:
 
 No global install needed — `npx` runs Expo for you.
 
+> **Workshop participants:** see **[BEFORE_THE_WORKSHOP.md](./BEFORE_THE_WORKSHOP.md)** for a
+> friendly install checklist to do *before* the session.
+
+This project targets **Expo SDK 54**, which the current App Store / Play Store **Expo Go** supports —
+so it runs on real phones out of the box.
+
 ---
 
 ## Install & run
 
 ```bash
-cd Merlin
+git clone https://github.com/danielboaron23/merlin-workshop.git
+cd merlin-workshop
 npm install        # first time only — downloads dependencies
 npm start          # starts the dev server + shows a QR code
 ```
@@ -88,9 +95,23 @@ src/
 assets/figma/            # images downloaded from the Figma file
 ```
 
+## Design system
+
+This repo also ships a full design system extracted from Figma — tokens + components,
+browsable in Storybook:
+
+```bash
+npm run storybook   # opens the component catalog in the browser
+```
+
+See **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** for the tokens and component list.
+
 ## Notes
 - The Figma uses the **Saans** font (commercial); this project uses **Inter** as the closest free match.
 - The data (leads, names, messages) is mock content for the demo.
 - `Analytics` tab is a placeholder — no Figma design for it yet.
 
-For a step-by-step setup written for workshop participants, see **[WORKSHOP.md](./WORKSHOP.md)**.
+## Workshop docs
+- **[BEFORE_THE_WORKSHOP.md](./BEFORE_THE_WORKSHOP.md)** — what to install/bring beforehand
+- **[WORKSHOP.md](./WORKSHOP.md)** — the step-by-step we follow during the session
+- **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** — the design-system reference
