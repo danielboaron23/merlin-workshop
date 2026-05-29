@@ -41,6 +41,12 @@ This app lets your phone open the project.
 - **iPhone:** App Store → search **Expo Go** → install.
 - **Android:** Google Play → search **Expo Go** → install.
 
+### 4. Install Xcode (for the iPhone Simulator)
+We'll also run the app in a virtual iPhone on your Mac.
+
+- Install **Xcode** from the **App Store**, then open it once to finish setup.
+- ⏰ **Do this at home before the workshop** — Xcode is ~7–12GB and takes 30–60 min.
+
 ---
 
 ## Part 2 — Get the project (~5 min)
@@ -92,7 +98,9 @@ npm run tunnel
 If it asks to install a helper, say **yes**. Scan the new QR code the same way.
 
 ### Want to see it on your laptop too?
-With the server running, press **`w`** — the app opens in your browser at <http://localhost:8081>.
+With the server running:
+- press **`w`** — the app opens in your **browser** at <http://localhost:8081>
+- press **`i`** — the app opens in the **iPhone Simulator** (needs Xcode installed)
 
 ---
 

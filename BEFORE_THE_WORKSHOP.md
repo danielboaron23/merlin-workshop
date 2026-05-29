@@ -1,8 +1,8 @@
 # Before the Workshop — what to install & bring ✅
 
 Hi! 👋 Please do this **before** the workshop so we don't lose time on setup.
-It takes about **15–20 minutes**. If you get stuck on any step, that's fine — come a few
-minutes early and we'll sort it out together.
+It takes about **20–30 minutes** (most of it is the Xcode download — see below ⏰).
+If you get stuck on any step, that's fine — come a few minutes early and we'll sort it out together.
 
 > **Goal:** by the end of the workshop you'll have a real mobile app running **on your own phone**,
 > and you'll edit it live using an AI coding assistant. Everything below is free.
@@ -11,7 +11,7 @@ minutes early and we'll sort it out together.
 
 ## 🧰 What to bring on the day
 
-- [ ] Your **laptop** (Mac, Windows, or Linux) — and its **charger**
+- [ ] Your **Mac laptop** — and its **charger**
 - [ ] Your **phone** (iPhone or Android) — and its **charger**
 - [ ] Your **Apple ID / Google account password** (you may need it to install an app)
 - [ ] Both devices able to join **the same Wi-Fi** (we'll share the workshop network)
@@ -31,8 +31,11 @@ minutes early and we'll sort it out together.
   - **Mac:** the terminal is the **Terminal** app (Cmd+Space → type "Terminal").
   - **Windows:** use **PowerShell** (Start menu → type "PowerShell").
 
-### 2. A code editor  *(recommended: VS Code)*
-- Download from **<https://code.visualstudio.com>** and install. We'll use it to look at the code.
+### 2. A code editor  *(pick one — whichever you prefer)*
+- **VS Code** — from **<https://code.visualstudio.com>**, or
+- **Cursor** — from **<https://cursor.com>** (editor with built-in AI)
+
+We'll use it to look at the code.
 
 ### 3. Claude Code  *(the AI assistant we'll use to edit the app)*
 - Follow the install guide at **<https://docs.claude.com/claude-code>**.
@@ -40,8 +43,16 @@ minutes early and we'll sort it out together.
 - ℹ️ You'll need an Anthropic account / login — set that up in advance if you can.
 
 ### 4. Git  *(to download the project)*
-- **Mac:** type `git --version` in Terminal. If it's missing, it will offer to install — accept.
-- **Windows:** install from **<https://git-scm.com/download/win>**.
+- Type `git --version` in Terminal. If it's missing, it will offer to install — accept.
+
+### 5. Xcode  *(for the iPhone Simulator on your Mac)*
+- Install from the **App Store** (search "Xcode").
+- After installing, open it once and accept the additional components it asks to download.
+- **Check:** type `xcode-select -p` in Terminal — it should print a path. ✅
+
+> ⏰ **Very important — download this in advance at home!** Xcode is **huge**
+> (~7–12GB download, ~15–40GB installed) and takes **30–60 minutes**. It **cannot**
+> be installed during the workshop — please do it the day before, on good Wi-Fi.
 
 ---
 
@@ -89,8 +100,10 @@ Then scan the new QR. (The first time, if it asks to install a helper, say **yes
 
 ## ❓ Common questions
 
-**Do I need a Mac?**
-No. Any laptop works. *(A Mac is only needed if you want the iPhone **simulator** — we'll mostly use real phones, so this is optional.)*
+**Why do I need that heavy Xcode?**
+It includes the **iPhone Simulator** — a virtual iPhone on your Mac screen where we'll run and
+show the app (great for projecting). Without it you can still see the app on your phone and in the
+browser, but we'll use the simulator in this workshop — so install it **in advance** (it's big and the download is long).
 
 **Do I need to know how to code?**
 No. The whole point is that the AI does the coding — you'll just describe what you want.
@@ -109,9 +122,10 @@ Your phone and laptop must be on the **same Wi-Fi**. If they are and it still fa
 ## 📋 Quick checklist (tick these off before you arrive)
 
 - [ ] Node.js installed (`node -v` shows a version)
-- [ ] VS Code installed
+- [ ] Code editor installed (VS Code or Cursor)
 - [ ] Claude Code installed (`claude` opens) + Anthropic login ready
 - [ ] Git installed (`git --version` shows a version)
+- [ ] **Xcode** installed in advance (`xcode-select -p` prints a path) — heavy download, do it at home!
 - [ ] **Expo Go** installed on your phone (latest version)
 - [ ] *(optional)* Ran the 5-minute test successfully
 
