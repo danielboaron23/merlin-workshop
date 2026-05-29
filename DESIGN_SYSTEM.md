@@ -82,6 +82,13 @@ Figma font **Saans** (commercial) → **Inter** (free) in code. Variants in `typ
 | `ProgressRing` | % ring, label centered | any percent / size |
 | `ListRow` | lead/inbox row | unread / read · pressed |
 | `TabBar` | bottom navigation | active (filled+semibold) / inactive · unread dot |
+| `StepHeader` | multi-step flow header | back · progress track · close · "Step X of Y" |
+| `OptionCard` | selectable option card | default / selected · icon · badge · disabled |
+| `ChannelGlyph` | channel brand logo (Google/IG/FB) | tinted to channel color |
+| `ChannelCard` | selectable channel card (Concept B hub) | default / selected · channel-tinted |
+| `SegmentedControl` | pill tab switcher | active thumb · optional icons |
+| `BudgetSplitBar` | budget split across channels | segmented bar + legend |
+| `InstagramPreview` / `FacebookPreview` | native-shape ad previews | photo · caption · CTA |
 
 Each component has a matching `*.stories.tsx` showing every state.
 
