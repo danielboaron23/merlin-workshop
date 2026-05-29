@@ -54,6 +54,15 @@ export const palette = {
 
   // status
   notification: "#FF3B30",
+
+  // ad channels (Concept B) — official brand colors, used only for channel cues
+  googleBlue: "#4285F4",
+  googleRed: "#EA4335",
+  googleYellow: "#FBBC05",
+  googleGreen: "#34A853",
+  instagram: "#E1306C", // IG magenta (gradient anchor)
+  instagramTo: "#F77737", // IG warm orange (gradient end)
+  facebook: "#1877F2", // FB blue
 };
 
 /* ----------------------------------------------------------------------------
@@ -183,6 +192,19 @@ export const gradient = {
     start: { x: 0.9, y: 0 },
     end: { x: 0.1, y: 1 },
   },
+  // Channel gradients (Concept B) — for channel cues only.
+  instagram: {
+    colors: ["#F77737", "#E1306C", "#833AB4"] as const,
+    start: { x: 0, y: 1 },
+    end: { x: 1, y: 0 },
+  },
+};
+
+/* Per-channel brand palette (Concept B). One place for channel identity. */
+export const channelColor = {
+  google: palette.googleBlue,
+  instagram: palette.instagram,
+  facebook: palette.facebook,
 };
 
 export const tokens = {
@@ -196,6 +218,7 @@ export const tokens = {
   blurRadius,
   iconSize,
   gradient,
+  channelColor,
 };
 
 export default tokens;

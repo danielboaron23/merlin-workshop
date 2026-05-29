@@ -24,3 +24,10 @@ export { default as Dialog } from "./components/Dialog";
 export { default as StepCard } from "./components/StepCard";
 export { default as StepHeader } from "./components/StepHeader";
 export { default as OptionCard } from "./components/OptionCard";
+
+export { default as ChannelGlyph, CHANNEL_LABEL, channelTint } from "./components/ChannelGlyph";
+export type { ChannelKey } from "./components/ChannelGlyph";
+export { default as ChannelCard } from "./components/ChannelCard";
+export { default as SegmentedControl } from "./components/SegmentedControl";
+export { default as BudgetSplitBar } from "./components/BudgetSplitBar";
+export { InstagramPreview, FacebookPreview } from "./components/ChannelPreview";

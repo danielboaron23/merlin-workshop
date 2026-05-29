@@ -5,18 +5,26 @@ import AppBar from "../components/AppBar";
 import GoogleAdCard from "../components/GoogleAdCard";
 import { colors, font, heroGradient, radius, space, type } from "../theme";
 import CampaignDashboard from "./campaign/CampaignDashboard";
+import CampaignsConceptB from "./campaign/CampaignsConceptB";
+import { CAMPAIGNS_CONCEPT } from "./campaign/concept";
 import CreateCampaignFlow from "./campaign/CreateCampaignFlow";
 import { CampaignDraft } from "./campaign/draft";
 
 type View_ = "landing" | "flow" | "dashboard";
 
 /**
- * Campaigns tab. A small state machine:
- *  - landing   → marketing screen with "Check it out" (the Figma design)
- *  - flow      → the Create Campaign flow (docs/PRD-campaigns.md)
- *  - dashboard → post-launch campaign dashboard
+ * Campaigns tab. Two concepts, switched by CAMPAIGNS_CONCEPT (src/screens/campaign/concept.ts):
+ *  - "A" → Google-first single flow behind "Check it out"   (docs/PRD-campaigns.md)
+ *  - "B" → channel-first builder (pick/combine channels)    (docs/PRD-campaigns-concept-b.md)
+ *
+ * Concept A is the small state machine below (landing → flow → dashboard).
  */
 export default function CampaignsScreen() {
+  if (CAMPAIGNS_CONCEPT === "B") return <CampaignsConceptB />;
+  return <CampaignsConceptA />;
+}
+
+function CampaignsConceptA() {
   const [view, setView] = useState<View_>("landing");
   const [draft, setDraft] = useState<CampaignDraft | null>(null);
 
